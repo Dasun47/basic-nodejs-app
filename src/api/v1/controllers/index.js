@@ -1,8 +1,10 @@
 //--------Imports------------------
-const { UserRegister } = require("./User");
+const { UserRegister, LoginUser, GetUserById } = require("./User");
 
 //---------Exports-----------------
 
 module.exports = {
   UserRegister,
+  LoginUser,
+  GetUserById,
 };
