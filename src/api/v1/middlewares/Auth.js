@@ -41,4 +41,26 @@ const AuthenticateUser = (req, res, next) => {
   }
 };
 
-module.exports = { AuthenticateUser };
+//--------Middleware function to authorize the user-------
+const AuthorizeUser = (roles) => {
+  return (req, res, next) => {
+    const userRole = req.user.userType;
+    try {
+      if (roles.includes(userRole)) {
+        return next();
+      }
+
+      return res.status(401).json({
+        status: false,
+        error: { message: "Permission denied to access this resource!" },
+      });
+    } catch (error) {
+      console.log(err);
+      return res.status(500).json({
+        status: false,
+        error: { message: "Failed to  authorize the user!" },
+      });
+    }
+  };
+};
+module.exports = { AuthenticateUser, AuthorizeUser };

@@ -1,7 +1,8 @@
 //---------------imports---------
-const { AuthenticateUser } = require("./Auth");
+const { AuthenticateUser, AuthorizeUser } = require("./Auth");
 
 //------Exports-------
 module.exports = {
   AuthenticateUser,
+  AuthorizeUser
 };
